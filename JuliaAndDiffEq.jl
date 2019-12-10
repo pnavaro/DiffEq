@@ -164,16 +164,16 @@ sol(5.5u"s")
 # ## Easily Change to Stochastic Differential Equations
 
 # + slideshow={"slide_type": "fragment"}
-using DifferentialEquations
 function g(du,u,p,t)
   du[1] = 0.2u[1]
   du[2] = 0.2u[2]
 end
-p = (1.5,1.0,3.0,1.0); u0 = [1.0;1.0]
+p = (1.5,1.0,3.0,1.0)
+u0 = [1.0;1.0]
 tspan = (0.0,10.0)
 prob1 = SDEProblem(f,g,u0,tspan,p)
 sol = solve(prob1)
-using Plots; plot(sol)
+plot(sol)
 
 # + [markdown] slideshow={"slide_type": "slide"}
 # ## And Delay Differential Equations
@@ -190,4 +190,4 @@ tspan = (0.0,10.0)
 _h(p,t) = ones(2)
 prob1 = DDEProblem(f,u0,_h,tspan,p)
 sol = solve(prob1)
-using Plots; plot(sol)
+plot(sol)
